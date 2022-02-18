@@ -7,7 +7,7 @@
 #' @export
 #'
 
-list_qfieldcloud_users <- function(token, endpoint) {
+get_qfieldcloud_users <- function(token, endpoint) {
 
   url <- paste0("https://", endpoint, "/api/v1/users/")
 

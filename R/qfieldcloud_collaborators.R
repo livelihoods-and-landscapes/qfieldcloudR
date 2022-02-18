@@ -2,6 +2,7 @@
 #'
 #' @param token session token
 #' @param endpoint QFieldCloud app url (omit https:// and trailing /)
+#' @param project_id QFieldCloud project id
 #'
 #' @return data.frame with two columns storing project names and project ids
 #' @export
@@ -175,7 +176,6 @@ update_qfieldcloud_collaborator <- function(token, endpoint, project_id, usernam
 #' @param endpoint QFieldCloud app url (omit https:// and trailing /)
 #' @param project_id QFieldCloud project id
 #' @param username QFieldCloud username to delete
-#' @param role QFieldCloud role to assign the user within the project
 #'
 #' @return string indicating success or failure
 #' @export
