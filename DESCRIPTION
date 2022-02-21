@@ -10,4 +10,5 @@ LazyData: true
 RoxygenNote: 7.1.2
 License: MIT + file LICENSE
 Imports:
-  httr
+  httr,
+  xfun
