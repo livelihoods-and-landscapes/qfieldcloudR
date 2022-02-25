@@ -1,4 +1,4 @@
-#' Get QFieldCloud files in project (GeoPackages only)
+#' Get QFieldCloud files in project
 #'
 #' @param token session token
 #' @param endpoint QFieldCloud app url (omit https:// and trailing /)
