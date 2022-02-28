@@ -67,11 +67,11 @@ get_qfieldcloud_file <- function(token, endpoint, project_id, filename) {
         httr::add_headers(Authorization = paste0("token ", token))
       ))
 
-      location <- file_data$headers$location
-
-      file_data <- httr::GET(
-        url = location
-      )
+      # location <- file_data$headers$location
+      #
+      # file_data <- httr::GET(
+      #   url = location
+      # )
 
       ext <- xfun::file_ext(filename)
       fname <- xfun::sans_ext(filename)

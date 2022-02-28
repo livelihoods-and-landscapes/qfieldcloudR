@@ -2,7 +2,7 @@
 % Please edit documentation in R/qfieldcloud_files.R
 \name{get_qfieldcloud_files}
 \alias{get_qfieldcloud_files}
-\title{Get QFieldCloud files in project (GeoPackages only)}
+\title{Get QFieldCloud files in project}
 \usage{
 get_qfieldcloud_files(token, endpoint, project_id)
 }
@@ -17,5 +17,5 @@ get_qfieldcloud_files(token, endpoint, project_id)
 data.frame with two columns storing file name and last modified data
 }
 \description{
-Get QFieldCloud files in project (GeoPackages only)
+Get QFieldCloud files in project
 }
