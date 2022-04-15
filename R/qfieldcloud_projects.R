@@ -77,3 +77,48 @@ get_qfieldcloud_project <- function(token, endpoint, project_id) {
 
   project
 }
+
+
+#' Create a QFieldCloud project
+#'
+#' @param token session token
+#' @param endpoint QFieldCloud app url (omit https:// and trailing /)
+#' @param project_name QFieldCloud project name
+#'
+#' @return string indicating project creation success or failure
+#' @export
+#'
+
+post_qfieldcloud_project <- function(token, endpoint, project_name) {
+  url <- paste0("https://", endpoint, "/api/v1/projects/")
+
+  create_project_status <- tryCatch(
+    error = function(cnd) {
+      project = "Failed to create project."
+    },
+    {
+      content <- list(
+        name = project_name
+      )
+
+      project_response <- httr::POST(
+        url = url,
+        httr::add_headers(Authorization = paste0("token ", token)),
+        body = content
+      )
+
+      status_code <- project_response$status_code
+
+      if (status_code < 399) {
+        create_project_status <- "success"
+      } else {
+        create_project_status <- "Failed to add collaborator."
+      }
+
+      create_project_status
+
+    }
+  )
+
+  create_project_status
+}

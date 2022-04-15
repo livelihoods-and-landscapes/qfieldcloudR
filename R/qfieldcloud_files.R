@@ -90,3 +90,50 @@ get_qfieldcloud_file <- function(token, endpoint, project_id, filename) {
 
   file_path_df
 }
+
+
+#' Create QFieldCloud files
+#'
+#' @param token session token
+#' @param endpoint QFieldCloud app url (omit https:// and trailing /)
+#' @param project_id QFieldCloud project id
+#' @param filename QFieldCloud filename
+#' @param file_path file path of file to upload to QFieldCloud project
+#'
+#' @return string indicating project creation success or failure
+#' @export
+#'
+
+post_qfieldcloud_file <- function(token, endpoint, project_id, filename, file_path) {
+  url <- paste0("https://", endpoint, "/api/v1/files/", project_id, "/", filename, "/")
+
+  create_file_status <- tryCatch(
+    error = function(cnd) {
+      project = "Failed to create file."
+    },
+    {
+      content <- list(
+        file = httr::upload_file(file_path)
+      )
+
+      file_response <- httr::POST(
+        url = url,
+        httr::add_headers(Authorization = paste0("token ", token)),
+        body = content
+      )
+
+      status_code <- file_response$status_code
+
+      if (status_code < 399) {
+        create_file_status <- "success"
+      } else {
+        create_file_status <- "Failed to create file."
+      }
+
+      create_file_status
+
+    }
+  )
+
+  create_file_status
+}
